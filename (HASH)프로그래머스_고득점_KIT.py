@@ -38,3 +38,23 @@ def solution(phone_book):
     return answer
 
 # 전화번호 목록 - 해시
+
+# 의상 - 해시
+def solution(clothes):
+    # ---
+    prod_count = len(clothes)
+    dict_val = {arg:0 for prod,arg in clothes}
+    for prod,arg in clothes:
+        dict_val[arg] += 1
+    unique_prod = len(dict_val.keys())
+    # ---
+    if unique_prod > 1:
+        tmp = 1
+        for arg in dict_val.values():
+            tmp *= (arg+1) # 해당 의상 종류를 입지 않은 경우 
+            # A(N 개) B(M 개)
+            # (N+1)(M+1) = NM + N + M + 1
+        answer = tmp -1
+    else:   
+        answer = prod_count
+    return answer
